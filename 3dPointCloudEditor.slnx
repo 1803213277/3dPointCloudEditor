@@ -1,0 +1,11 @@
+<Solution>
+  <Configurations>
+    <Platform Name="ARM64" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <!--
+    非打包桌面应用，不再需要 MSIX 部署步骤，因此去掉了原来的 <Deploy />。
+  -->
+  <Project Path="3dPointCloudEditor/3dPointCloudEditor.vcxproj" Id="7ed1c2e2-8bc9-4710-8412-9e61d9ff88c0" />
+</Solution>
