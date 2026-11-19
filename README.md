@@ -1,3 +1,5 @@
+**中文** | [English](README.en.md)
+
 # 3D 点云编辑器
 
 **Windows 桌面点云查看与编辑工具** —— WinUI 3 + DirectX 12，用 C++20 写成。
