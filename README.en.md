@@ -64,6 +64,18 @@ Output is flat in `x64\Release\` (`x64\Debug\` for Debug): `3dPointCloudEditor.e
 You can also open `3dPointCloudEditor.slnx` in Visual Studio and press `F5`. The project is an
 **unpackaged** app, so F5 does not deploy an MSIX package — it just launches the built exe.
 
+### Build a Setup.exe
+
+To hand the app to someone else, build an Inno Setup installer (per-user, no admin rights needed):
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\tools\make-installer.ps1
+```
+
+Output: `dist\3dPointCloudEditor-<version>-setup.exe` (~34 MB, bundles the Windows App SDK and
+VC++ runtime). The first run needs Inno Setup's `ISCC.exe`; the script looks for it in `PATH`, under
+`%LocalAppData%\Programs\InnoSetupNuget\*\tools\`, and in `Program Files`.
+
 ### Command line
 
 ```powershell
@@ -106,6 +118,14 @@ The 4 files in `samples/` are both test data and the content of the **Demo Cloud
 (sphere / wave / helix / torus, covering ASCII, binary LE/BE and PCD):
 
 ![Demo cloud drop-down menu](docs/images/demo-menu.png)
+
+What the four samples look like (screenshots taken after opening each from the menu):
+
+| Sphere (PLY ASCII, 10k points) | Wave (PLY binary LE, 90k points) |
+| :---: | :---: |
+| ![Sphere](docs/images/samples/sphere.png) | ![Wave](docs/images/samples/wave.png) |
+| **Helix (PLY binary BE, 6k points)** | **Torus (PCD, 20k points)** |
+| ![Helix](docs/images/samples/helix.png) | ![Torus](docs/images/samples/torus.png) |
 
 ## Project layout
 

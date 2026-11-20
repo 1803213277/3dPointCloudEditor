@@ -380,3 +380,5 @@ FodyWeavers.xsd
 /build-*.log
 /run-out.txt
 /run-err.txt
+# tools/make-installer.ps1 生成的安装包（约 34 MB，只用于分发）
+/dist/

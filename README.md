@@ -58,6 +58,18 @@ msbuild .\3dPointCloudEditor\3dPointCloudEditor.vcxproj /p:Configuration=Release
 也可以在 Visual Studio 里打开 `3dPointCloudEditor.slnx` 直接 `F5`（项目是**非打包**应用，
 不部署 MSIX，F5 只是启动生成的 exe）。
 
+### 打包安装程序
+
+需要发给别人时，生成一个 `Setup.exe`（Inno Setup；默认装到用户目录，**不需要管理员权限**）：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\tools\make-installer.ps1
+```
+
+产物：`dist\3dPointCloudEditor-<版本>-setup.exe`（约 34 MB，含 Windows App SDK / VC++ 运行时）。
+首次打包需要 Inno Setup 的 `ISCC.exe`，脚本会自动在 PATH、
+`%LocalAppData%\Programs\InnoSetupNuget\*\tools\`、`Program Files` 下查找。
+
 ### 命令行参数
 
 ```powershell
@@ -98,6 +110,14 @@ msbuild .\3dPointCloudEditor\3dPointCloudEditor.vcxproj /p:Configuration=Release
 （球体 / 波浪曲面 / 螺旋线 / 环面，覆盖 ASCII、二进制小端/大端和 PCD）：
 
 ![示例点云下拉菜单](docs/images/demo-menu.png)
+
+四个示例的实际效果（依次从菜单打开后截图）：
+
+| 球体（PLY ASCII，1 万点） | 波浪曲面（PLY 二进制小端，9 万点） |
+| :---: | :---: |
+| ![球体](docs/images/samples/sphere.png) | ![波浪曲面](docs/images/samples/wave.png) |
+| **螺旋线（PLY 二进制大端，6 千点）** | **环面（PCD，2 万点）** |
+| ![螺旋线](docs/images/samples/helix.png) | ![环面](docs/images/samples/torus.png) |
 
 ## 项目结构
 
